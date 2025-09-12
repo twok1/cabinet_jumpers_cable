@@ -1,6 +1,8 @@
 from typing import Dict, Set, List
 from collections import defaultdict
 
+from core.connection import Connection
+
 class DataParser:
     def __init__(self, source):
         self.source = source
@@ -30,7 +32,12 @@ class DataParser:
         try:
             cabinet, signal, fr, to = line.split('\t')
             source_info = f'{self.num_file}_{self.num_line}'
-            self.cabinets_jumpers[cabinet].append({fr, to})
+            self.cabinets_jumpers[cabinet].append(Connection(
+                cabinet,
+                signal,
+                fr,
+                to
+            ))
             for term in (fr, to):
                 self.jumpers_to_lines[cabinet][term].append(source_info)
             

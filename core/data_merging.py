@@ -7,4 +7,12 @@ class DataMerging:
         
     def process(self):
         for cabinet, jumpers in self.cabinet_jumpers.items():
-            self.cabinet_jumpers[cabinet] = union_find(jumpers)
+            a = 0
+            while a < len(jumpers):
+                b = a + 1
+                while b < len(jumpers):
+                    if jumpers[a] & jumpers[b]:
+                        jumpers[a] |= jumpers.pop(b)
+                    else:
+                        b += 1
+                a += 1

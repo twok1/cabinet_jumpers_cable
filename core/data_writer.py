@@ -13,8 +13,7 @@ class DataWriter:
             print(cabinet)
             for jumper in sorted(jumpers, key=sorting_key):
                 lines = []
-                for wire in sorted(jumper, key=sorting_key):
-                    print('\t', wire, end='\t')
+                for wire in jumper:
                     lines.append(', '.join(self.jumpers_to_lines[cabinet][wire]))
-                print()
+                print('\t', jumper.tabulated_term())
                 print('\t', '\t'.join(lines))
