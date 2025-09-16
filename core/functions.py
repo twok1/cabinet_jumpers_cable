@@ -24,34 +24,3 @@ def sorting_key(item: set):
     number_two = int(numbers[1]) if numbers and len(numbers) >= 2 else 0
     
     return (group_priority, number_one, number_two, item)
-
-def union_find(sets):
-    parent = {}
-    
-    def find(x):
-        if parent[x] != x:
-            parent[x] = find(parent[x])
-        return parent[x]
-    
-    def union(x, y):
-        parent[find(x)] = find(y)
-    
-    # Инициализация
-    for s in sets:
-        for item in s:
-            if item not in parent:
-                parent[item] = item
-    
-    # Объединение
-    for s in sets:
-        if len(s) > 0:
-            first = next(iter(s))
-            for item in s:
-                union(first, item)
-    
-    # Группировка результатов
-    groups = defaultdict(set)
-    for item in parent:
-        groups[find(item)].add(item)
-    
-    return list(groups.values())
