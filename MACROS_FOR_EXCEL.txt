@@ -1,0 +1,87 @@
+# Этот вставить для листа:
+
+Private Sub Worksheet_SelectionChange(ByVal Target As Range)
+
+    Cells.Interior.ColorIndex = xlNone
+    
+    If Target.Count = 1 And Not IsEmpty(Target) Then
+        Dim cellValue As String
+        Dim values() As String
+        Dim i As Integer
+        Dim searchValue As String
+        Dim foundCell As Range
+        
+        cellValue = Target.Value
+        values = Split(cellValue, ", ")
+        
+        
+        Dim colorPalette As Variant
+        colorPalette = Array(RGB(255, 200, 200), RGB(200, 255, 200), RGB(200, 200, 255), _
+                            RGB(255, 255, 200), RGB(255, 200, 255), RGB(200, 255, 255))
+        
+        For i = LBound(values) To UBound(values)
+            searchValue = Trim(values(i))
+            
+            If searchValue <> "" Then
+                For Each foundCell In Target.EntireRow.Cells
+                    If foundCell.Address <> Target.Address And _
+                       Not IsEmpty(foundCell) And _
+                       InStr(1, foundCell.Value, searchValue) > 0 Then
+                       
+                       
+                        foundCell.Interior.Color = colorPalette(i Mod (UBound(colorPalette) + 1))
+                    End If
+                Next foundCell
+            End If
+        Next i
+        
+        
+        Target.Interior.Color = RGB(200, 200, 200)
+    End If
+End Sub
+
+
+
+
+# этот - для книги:
+
+Sub ФорматироватьПоУсловию()
+    Dim ws As Worksheet
+    Dim lastRow As Long
+    Dim i As Long
+    Dim cellValue As String
+    
+    ' Устанавливаем активный лист
+    Set ws = ActiveSheet
+    
+    ' Находим последнюю строку с данными в столбце B
+    lastRow = ws.Cells(ws.Rows.Count, "B").End(xlUp).Row
+    
+    ' Проходим по всем строкам
+    For i = 1 To lastRow
+        ' Получаем значение из колонки B
+        cellValue = CStr(ws.Cells(i, 2).Value)
+        
+        ' Проверяем, начинается ли значение с "XT"
+        If Left(cellValue, 2) = "XT" Then
+            ' Если начинается с "XT" - выделяем всю строку жирным
+            With ws.Rows(i)
+                .Font.Bold = True
+                .HorizontalAlignment = xlLeft ' Выравнивание по левому краю
+            End With
+        Else
+            ' Если НЕ начинается с "XT" - выравниваем всю строку по правому краю
+            With ws.Rows(i)
+                .Font.Bold = False
+                .HorizontalAlignment = xlRight
+            End With
+        End If
+    Next i
+    
+    ' Очищаем память
+    Set ws = Nothing
+    
+    MsgBox "Готово! Строки отформатированы по условию."
+End Sub
+
+
