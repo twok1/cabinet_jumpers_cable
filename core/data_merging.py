@@ -12,6 +12,7 @@ class DataMerging:
                 while b < len(jumpers):
                     if jumpers[a] & jumpers[b]:
                         jumpers[a] |= jumpers.pop(b)
+                        b = a + 1
                     else:
                         b += 1
                 a += 1
