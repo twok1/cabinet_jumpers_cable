@@ -81,3 +81,29 @@ class TestDataParser:
         parser.parse_data()
         
         assert parser.jumpers_to_lines['Cab1']['XT1-b1'] == ['1_1', '1_2']
+        
+    @patch('builtins.open', mock_open(read_data="Cab1\t\tXT1-b1\tXT2-b2\n"))
+    @patch('builtins.print')
+    def test_empty_signal(self, mock_print):
+        """Тест пустого сигнала"""
+        parser = DataParser("empty_signal.txt")
+        parser.parse_data()
+        
+        # Должен обработать без ошибок
+        assert len(parser.cabinets_connections["Cab1"]) == 1
+        connection = parser.cabinets_connections["Cab1"][0]
+        assert connection.signal == ""  # Пустой сигнал
+        
+def test_connection_objects_creation():
+    """Тест что создаются правильные объекты Connection"""
+    test_content = "Cab1\tSignal1\tXT1-b1\tXT2-b2\n"
+    
+    with patch('builtins.open', mock_open(read_data=test_content)):
+        parser = DataParser("test.txt")
+        parser.parse_data()
+        
+        connection = parser.cabinets_connections["Cab1"][0]
+        assert isinstance(connection, Connection)
+        assert connection.cabinet == "Cab1"
+        assert connection.signal == "Signal1"
+        assert connection.terms == {"XT1-b1", "XT2-b2"}
