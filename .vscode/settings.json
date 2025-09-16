@@ -1,6 +1,9 @@
 {
     "python.testing.pytestArgs": [
-        "tests"
+        "tests",
+        "-vv",
+        "--tb=long",
+        "--no-header"
     ],
     "python.testing.unittestEnabled": false,
     "python.testing.pytestEnabled": true
