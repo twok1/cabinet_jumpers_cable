@@ -2,7 +2,7 @@ from core.functions import sorting_key
 
 class Connection:
     """представления одного соединения /перемычка, шлейф в рамках шкафа/"""
-    def __init__(self, cabinet: str, signal: str, *terms):
+    def __init__(self, cabinet: str, signal: str = None, *terms):
         self.cabinet = cabinet
         self.signal = signal
         self.terms = set(terms)
@@ -15,7 +15,7 @@ class Connection:
         return iter(sorted(self.terms, key=sorting_key))
     
     def __repr__(self):
-        return f'Connection({self.cabinet}, {self.signal}, {", ".join(self.terms)})'
+        return f'Connection({self.cabinet}, {self.signal}, {", ".join(self)})'
     
     def __and__(self, other):
         if isinstance(other, Connection):
@@ -35,6 +35,11 @@ class Connection:
     
     def __bool__(self):
         return bool(len(self.terms))
+    
+    def __eq__(self, value):
+        if isinstance(value, Connection):
+            return repr(self) == repr(value)
+        return NotImplemented
     
     def __add__(self, other):
         if isinstance(other, Connection):
