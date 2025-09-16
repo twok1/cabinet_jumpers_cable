@@ -32,7 +32,7 @@ cabinet_jumpers_cable/
 ```bash
 # Клонирование репозитория (если применимо)
 git clone <repository-url>
-cd kross_tpts_v2
+cd cabinet_jumpers_cable
 
 # Создание виртуального окружения (рекомендуется)
 python -m venv venv
