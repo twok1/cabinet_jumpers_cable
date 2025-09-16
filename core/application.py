@@ -7,7 +7,7 @@ class Application:
         self.source = source
         self.target = target
         self.parser = DataParser(source)
-        self.merger = DataMerging(self.parser.cabinets_jumpers)
+        self.merger = DataMerging(self.parser.cabinets_connections)
         self.writer = DataWriter(target, self.merger.cabinet_jumpers, self.parser.jumpers_to_lines)
         
     def run(self):
