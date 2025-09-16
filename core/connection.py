@@ -47,7 +47,6 @@ class Connection:
     
     
 if __name__ == '__main__':
-    print(*{'1', '2'})
     first_conn = Connection(*'1HV19	0501	XT11-b9	XT10-b9'.split('\t'))
     second_conn = Connection(*'1HV19	0501	XT11-b9	XT12-b9'.split('\t'))
     third_conn = first_conn + second_conn
