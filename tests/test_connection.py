@@ -155,11 +155,11 @@ class TestConnection:
         assert result == ""
     
     def test_equality_not_implemented(self):
-        """Тест что равенство не реализовано"""
+        """Тест что равенство реализовано"""
         conn1 = Connection("Cab1", "Signal1", "term1")
         conn2 = Connection("Cab1", "Signal1", "term1")
-        # Класс не реализует __eq__, поэтому объекты не равны даже с одинаковыми данными
-        assert conn1 != conn2
+        # Класс реализует __eq__,
+        assert conn1 == conn2
     
     def test_real_world_example(self):
         """Тест реального примера из main"""
