@@ -21,7 +21,7 @@ class Connection:
         if isinstance(other, Connection):
             if self.cabinet == other.cabinet and self.signal == other.signal:
                 return Connection(self.cabinet, self.signal, *(self.terms & other.terms))
-            elif self.cabinet == other.cabinet and self.signal != other.signal:
+            elif self.cabinet != other.cabinet or self.signal != other.signal:
                 return Connection(self.cabinet, self.signal)
         return NotImplemented
     
@@ -29,7 +29,7 @@ class Connection:
         if isinstance(other, Connection):
             if self.cabinet == other.cabinet and self.signal == other.signal:
                 return Connection(self.cabinet, self.signal, *(self.terms | other.terms))
-            elif self.cabinet == other.cabinet and self.signal != other.signal:
+            elif self.cabinet != other.cabinet or self.signal != other.signal:
                 return Connection(self.cabinet, self.signal)
         return NotImplemented
     
