@@ -5,7 +5,7 @@
 ## Структура Проекта
 
 ```
-kross_tpts_v2/
+cabinet_jumpers_cable/
 ├── core/                    # Основные модули приложения
 │   ├── __init__.py         # Пакет core
 │   ├── application.py      # Главный класс приложения
