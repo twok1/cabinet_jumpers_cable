@@ -8,7 +8,7 @@ class DataParser:
         self.source = source
         self.num_file = 0
         self.num_line = 0
-        self.cabinets_connections: Dict[str, List[Set[str]]] = defaultdict(list)
+        self.cabinets_connections: Dict[str, List[Connection]] = defaultdict(list)
         self.jumpers_to_lines: Dict[str, Dict[str, List[str]]] = defaultdict(lambda: defaultdict(list))
         
     def parse_data(self):

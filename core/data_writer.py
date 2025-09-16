@@ -1,9 +1,10 @@
 from typing import Dict, List, Set
 
 from core.functions import sorting_key
+from core.connection import Connection
 
 class DataWriter:
-    def __init__(self, target, cabinet_jumpers: Dict[str, List[Set[str]]], jumpers_to_lines: Dict[str, Dict[str, List[str]]]):
+    def __init__(self, target, cabinet_jumpers: Dict[str, List[Connection]], jumpers_to_lines: Dict[str, Dict[str, List[str]]]):
         self.target = target
         self.cabinet_jumpers: Dict[str, List[Set[str]]] = cabinet_jumpers
         self.jumpers_to_lines: Dict[str, Dict[str, List[str]]] = jumpers_to_lines

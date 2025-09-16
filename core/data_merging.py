@@ -1,7 +1,9 @@
 from typing import Dict, Set, List
 
+from core.connection import Connection
+
 class DataMerging:
-    def __init__(self, cabinet_jumpers: Dict[str, List[Set[str]]]):
+    def __init__(self, cabinet_jumpers: Dict[str, List[Connection]]):
         self.cabinet_jumpers = cabinet_jumpers
         
     def process(self):
