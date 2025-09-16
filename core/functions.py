@@ -1,3 +1,6 @@
+from collections import defaultdict
+
+
 def sorting_key(item: set):
     """
     Кастомный ключ сортировки для элементов вида XT...
@@ -21,9 +24,6 @@ def sorting_key(item: set):
     number_two = int(numbers[1]) if numbers and len(numbers) >= 2 else 0
     
     return (group_priority, number_one, number_two, item)
-
-
-from collections import defaultdict
 
 def union_find(sets):
     parent = {}

@@ -1,5 +1,4 @@
 from typing import Dict, Set, List
-from core.functions import union_find
 
 class DataMerging:
     def __init__(self, cabinet_jumpers: Dict[str, List[Set[str]]]):
