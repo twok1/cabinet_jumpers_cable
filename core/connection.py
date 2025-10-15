@@ -19,7 +19,7 @@ class Connection:
     
     def __and__(self, other):
         if isinstance(other, Connection):
-            if self.cabinet == other.cabinet and self.signal == other.signal:
+            if self.cabinet == other.cabinet:
                 return Connection(self.cabinet, self.signal, *(self.terms & other.terms))
             elif self.cabinet != other.cabinet or self.signal != other.signal:
                 return Connection(self.cabinet, self.signal)
@@ -27,7 +27,7 @@ class Connection:
     
     def __or__(self, other):
         if isinstance(other, Connection):
-            if self.cabinet == other.cabinet and self.signal == other.signal:
+            if self.cabinet == other.cabinet:
                 return Connection(self.cabinet, self.signal, *(self.terms | other.terms))
             elif self.cabinet != other.cabinet or self.signal != other.signal:
                 return Connection(self.cabinet, self.signal)

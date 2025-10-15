@@ -1,7 +1,7 @@
 import pytest
 from typing import Dict, Set, List
 
-from core.data_merging import DataMerging
+from core.data_merger import DataMerging
 from core.connection import Connection
 
 class TestDataMerging:

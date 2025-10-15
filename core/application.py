@@ -1,6 +1,6 @@
 from core.data_parser import DataParser
 from core.data_writer import DataWriter
-from core.data_merging import DataMerging
+from core.data_merger import DataMerging
 
 class Application:
     def __init__(self, source: str, target: str):

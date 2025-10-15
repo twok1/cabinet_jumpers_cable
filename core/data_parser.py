@@ -43,7 +43,8 @@ class DataParser:
             to
         ))
         for term in (fr, to):
-            self.jumpers_to_lines[cabinet][term].append(source_info)
+            if term:
+                self.jumpers_to_lines[cabinet][term].append(source_info)
             
         # except:
         #     print('Ошибка парсинга страницы')
