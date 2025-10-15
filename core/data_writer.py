@@ -24,4 +24,4 @@ class DataWriter:
     def print(self, *line):
         with open(self.target, 'a', encoding='utf-8') as f:
             f.write(f'{line[0]}\n')
-            print(*line)
+            # print(*line)

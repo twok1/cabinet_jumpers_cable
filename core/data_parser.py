@@ -29,19 +29,23 @@ class DataParser:
         
         self.num_line += 1
         
-        try:
+        # try:
+        if len(line.split('\t')) > 3:
             cabinet, signal, fr, to = line.split('\t')
-            source_info = f'{self.num_file}_{self.num_line}'
-            self.cabinets_connections[cabinet].append(Connection(
-                cabinet,
-                signal,
-                fr,
-                to
-            ))
-            for term in (fr, to):
-                self.jumpers_to_lines[cabinet][term].append(source_info)
+        else:
+            cabinet, signal, fr = line.split('\t')
+            to = None
+        source_info = f'{self.num_file}_{self.num_line}'
+        self.cabinets_connections[cabinet].append(Connection(
+            cabinet,
+            signal,
+            fr,
+            to
+        ))
+        for term in (fr, to):
+            self.jumpers_to_lines[cabinet][term].append(source_info)
             
-        except:
-            print('Ошибка парсинга страницы')
+        # except:
+        #     print('Ошибка парсинга страницы')
             
             

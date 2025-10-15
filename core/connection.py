@@ -5,7 +5,7 @@ class Connection:
     def __init__(self, cabinet: str, signal: str = None, *terms):
         self.cabinet = cabinet
         self.signal = signal
-        self.terms = set(terms)
+        self.terms = set(i for i in terms if i)
         
     def __str__(self):
         line = " -> ".join(sorted(self.terms, key=sorting_key))

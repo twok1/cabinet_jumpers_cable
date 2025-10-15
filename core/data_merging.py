@@ -18,3 +18,5 @@ class DataMerging:
                     else:
                         b += 1
                 a += 1
+                if a % 100 == 0:
+                    print(f"{cabinet}={a}/{len(jumpers)}")
