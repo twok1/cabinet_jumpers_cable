@@ -18,8 +18,12 @@ class DataWriter:
                 lines = []
                 for wire in jumper:
                     lines.append(', '.join(self.jumpers_to_lines[cabinet][wire]))
+                ending = ''
+                for k in lines:
+                    if k.count(',') > 1:
+                        ending = '\tЗамечание 3 на 2' 
                 self.print(f'\t{jumper.tabulated_term()}')
-                self.print(f'\t{"\t".join(lines)}')
+                self.print(f'\t{"\t".join(lines)}{ending}')
                 
     def print(self, *line):
         with open(self.target, 'a', encoding='utf-8') as f:
