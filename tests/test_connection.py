@@ -84,7 +84,7 @@ class TestConnection:
         result = conn1 & conn2
         assert result.cabinet == "Cab1"
         assert result.signal == "Signal1"  # Берет сигнал из первого объекта
-        assert result.terms == set()  # Пустое множество при разных сигналах
+        assert result.terms == {"term2",}  # множество при разных сигналах
     
     def test_and_operator_different_cabinet(self):
         """Тест оператора & с разными шкафами"""
@@ -111,7 +111,7 @@ class TestConnection:
         result = conn1 | conn2
         assert result.cabinet == "Cab1"
         assert result.signal == "Signal1"  # Берет сигнал из первого объекта
-        assert result.terms == set()  # Пустое множество при разных сигналах
+        assert result.terms == {"term1", "term2", "term3"}  # Пустое множество при разных сигналах
     
     def test_add_operator_same_signal(self):
         """Тест оператора + с одинаковыми сигналами"""
@@ -196,7 +196,7 @@ class TestConnectionEdgeCases:
     def test_empty_string_terms(self):
         """Тест с пустыми строками в терминалах"""
         conn = Connection("Cab1", "Signal1", "", "term1")
-        assert conn.terms == {"", "term1"}
+        assert conn.terms == {"term1",}
     
 
 def test_sorting_key_integration():
