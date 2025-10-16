@@ -6,7 +6,7 @@ from core.connection import Connection
 class DataWriter:
     def __init__(self, target, cabinet_jumpers: Dict[str, List[Connection]], jumpers_to_lines: Dict[str, Dict[str, List[str]]]):
         self.target = target
-        self.cabinet_jumpers: Dict[str, List[Set[str]]] = cabinet_jumpers
+        self.cabinet_jumpers: Dict[str, List[Connection]] = cabinet_jumpers
         self.jumpers_to_lines: Dict[str, Dict[str, List[str]]] = jumpers_to_lines
         with open(self.target, 'w', encoding='utf-8') as f:
             f.write('')

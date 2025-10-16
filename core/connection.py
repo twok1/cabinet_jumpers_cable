@@ -2,7 +2,7 @@ from core.functions import sorting_key
 
 class Connection:
     """представления одного соединения /перемычка, шлейф в рамках шкафа/"""
-    def __init__(self, cabinet: str, signal: str = None, *terms):
+    def __init__(self, cabinet: str, signal: str = '', *terms):
         self.cabinet = cabinet
         self.signal = signal
         self.terms = set(i for i in terms if i)

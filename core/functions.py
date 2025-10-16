@@ -1,12 +1,9 @@
-from collections import defaultdict
-
-
 def sorting_key(item: set):
     """
     Кастомный ключ сортировки для элементов вида XT...
     Возвращает кортеж: (приоритет группы, число, исходная строка)
     """
-    item = ''.join(item)
+    item: str = ''.join(item)
     # Определяем приоритет группы
     if item.startswith('XTK'):
         group_priority = 0  # Первая группа: XTK

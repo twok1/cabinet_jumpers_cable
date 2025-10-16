@@ -4,7 +4,7 @@ from core.connection import Connection
 
 class DataMerging:
     def __init__(self, cabinet_jumpers: Dict[str, List[Connection]]):
-        self.cabinet_jumpers = cabinet_jumpers
+        self.cabinet_jumpers: Dict[str, List[Connection]] = cabinet_jumpers
         
     def process(self):
         for cabinet, jumpers in self.cabinet_jumpers.items():
@@ -19,4 +19,5 @@ class DataMerging:
                         b += 1
                 a += 1
                 if a % 100 == 0:
-                    print(f"{cabinet}={a}/{len(jumpers)}")
+                    print(f"\r{cabinet}={a}/{len(jumpers)}", end='')
+        print()
